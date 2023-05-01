@@ -8,7 +8,7 @@ dotenv.config()
 
 app.use(
     cors({
-      origin: 'http://localhost:4000'      
+      origin: '*'      
     })
   );
 app.use(express.json())
