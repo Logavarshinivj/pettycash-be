@@ -1,8 +1,8 @@
 const express=require("express")
-const {getAllTransaction,addTransaction,updateTransaction,getTransactionById,delTransaction}=require("../controllers/transController")
+const {getAllTransaction,addTransaction,updateTransaction,getTransactionById,delTransaction}=require("../controllers/transactionController")
 const router=express.Router()
 
-router.get("/get-trans",getAllTransaction)
+router.post("/get-trans",getAllTransaction)
 router.post("/add-trans",addTransaction)
 router.put("/update-trans/:id",updateTransaction)
 router.get("/get-trans/:id",getTransactionById)

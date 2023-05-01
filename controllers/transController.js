@@ -1,64 +1,89 @@
-const Transaction=require("../models/transModel")
+// const Transaction=require("../models/transModel")
 
-const getAllTransaction=async(req,res)=>{
-    // try{
-        const transaction=await Transaction.find({})
-        res.send(transaction)
-    // }
-    // catch{
-    //     res.send("error")
-    // }
-}
+// const getAllTransaction = async (req, res) => {
+//   try {
+//     const userId = req.user._id; // get the user id from the authenticated user
+//     const transaction = await Transaction.find({ userId }); // fetch the transactions with the logged-in user's id
+//     res.send(transaction);
+//   } catch {
+//     res.send("error");
+//   } 
+// };
 
-const addTransaction=async(req,res)=>{
-
-    // try {
-        const {voucher,
-            amount,
-            type,
-            purpose,
-            date,} =req.body;
-        console.log(req.body);
-
-        const newTransaction = await Transaction.create({
-            voucher,
-            amount,
-            type,
-            purpose,
-            date
-        });
-        res.send(newTransaction);
-    //   } 
-    //   catch (err) {
-    //     res.status(404).send({ message: "error" });
-    //   }
-    // };
-
-    }
- const updateTransaction= async function (request, response) {
-        const result = await Transaction.updateOne(
-          { _id: request.params.id },
-          { $set: request.body }
-        );
-        response.send(result);
-      };
-
-      const getTransactionById=async function (request,response) {
-
-        const result = await Transaction.findOne({ _id: request.params.id });
-      if (result) {
-        response.send(result);
-      } else {
-        response.send({ message: "no such record" });
-      }
-    };
-
-
-    const delTransaction=async(req,res)=>{
-      const result = await Transaction.deleteOne({ _id: req.params.id });
-      res.send(result);   
-  }
+// const addTransaction = async (req, res) => {
+//   try {
+//     // check if the user is authenticated
+//     // if (!req.user) {
+//     //   return res.status(401).send({ message: 'Unauthorized' });
+//     // }
     
+//     const userId = req.user._id; // get the user id from the authenticated user
+//     const newTransaction = new Transaction({
+//       voucher: req.body.voucher,
+//       amount: req.body.amount,
+//       type: req.body.type,
+//       purpose: req.body.purpose,
+//       date: req.body.date,
+//       userId: userId // assign the user id to the new transaction
+//     });
+//     let result = await newTransaction.save();
+//     res.status(200).send(result);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(400).send({ message: err.message });
+//   }
+// };
 
-module.exports={getAllTransaction,addTransaction,updateTransaction,getTransactionById,delTransaction}
+
+// const updateTransaction = async function (req, res) {
+//   try {
+//     const userId = req.user._id; // get the user id from the authenticated user
+//     const result = await Transaction.updateOne(
+//       { _id: req.params.id, userId },
+//       { $set: req.body }
+//     );
+//     res.send(result);
+//   } catch (err) {
+//     res.status(404).send({ message: "error" });
+//   }
+// };
+
+// const getTransactionById = async function (req, res) {
+//   try {
+//     const userId = req.user._id; // get the user id from the authenticated user
+//     const result = await Transaction.findOne({
+//       _id: req.params.id,
+//       userId,
+//     });
+//     if (result) {
+//       res.send(result);
+//     } else {
+//       res.send({ message: "no such record" });
+//     }
+//   } catch {
+//     res.send("error");
+//   }
+// };
+
+// const delTransaction = async (req, res) => {
+//   try {
+//     const userId = req.user._id; // get the user id from the authenticated user
+//     const result = await Transaction.deleteOne({
+//       _id: req.params.id,
+//       userId,
+//     });
+//     res.send(result);
+//   } catch (err) {
+//     res.status(404).send({ message: "error" });
+//   }
+// };
+
+// module.exports = {
+//   getAllTransaction,
+//   addTransaction,
+//   updateTransaction,
+//   getTransactionById,
+//   delTransaction,
+// };
+
 
